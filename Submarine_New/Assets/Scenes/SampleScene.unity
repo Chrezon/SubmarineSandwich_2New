@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 239677623}
   - component: {fileID: 239677622}
   m_Layer: 0
-  m_Name: Console_RightTop
+  m_Name: Console_LeftTop (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437720064}
-  - component: {fileID: 437720065}
   m_Layer: 0
   m_Name: Consoles
   m_TagString: Untagged
@@ -409,35 +408,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &437720065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437720063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89ed5b84ab51649849ccf1cc700ebc68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  consoles:
-  - {fileID: 11400000, guid: 03d55deaf22a54afca86f30e9e5f01a9, type: 2}
-  - {fileID: 11400000, guid: 365d3355b4c1e4bcfaaa7b1300b55c63, type: 2}
-  - {fileID: 11400000, guid: 145254920ea0a49fd9f18cff2163e491, type: 2}
-  - {fileID: 11400000, guid: 01ea15334ea3b4c5d89ce76f3c78b9ec, type: 2}
-  - {fileID: 11400000, guid: c6299939d9e104fa4b95199132eeed6f, type: 2}
-  - {fileID: 11400000, guid: aac762a7972f142ab9f68238b7281b6f, type: 2}
-  - {fileID: 11400000, guid: 365d3355b4c1e4bcfaaa7b1300b55c63, type: 2}
-  - {fileID: 11400000, guid: 145254920ea0a49fd9f18cff2163e491, type: 2}
-  - {fileID: 11400000, guid: 01ea15334ea3b4c5d89ce76f3c78b9ec, type: 2}
-  - {fileID: 11400000, guid: c6299939d9e104fa4b95199132eeed6f, type: 2}
-  locations:
-  - {fileID: 1002418221}
-  - {fileID: 552842729}
-  - {fileID: 624743207}
-  - {fileID: 1345122059}
-  - {fileID: 239677621}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +912,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -1104,11 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-<<<<<<< HEAD
   animator: {fileID: 1327079129}
-=======
-  animator: {fileID: 0}
->>>>>>> 5cbe7a523f1bfd92a632e9304c3192377034af0d
 --- !u!61 &1327079126
 BoxCollider2D:
   m_ObjectHideFlags: 0
