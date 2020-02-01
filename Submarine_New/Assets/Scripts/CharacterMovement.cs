@@ -52,12 +52,12 @@ public class CharacterMovement : MonoBehaviour
             }
             else if (yInput == 0)
             {
-                transform.localRotation = transform.Rotate(Vector3.up * -90);
+                transform.Rotate(Vector3.up * -90);
                 check = true;
             }
             else
             {
-                transform.localRotation = transform.Rotate(Vector3.up * -45);
+                transform.Rotate(Vector3.up * -45);
                 check = true;
             }
         }

@@ -6,6 +6,8 @@ public class ActivitiesScript : MonoBehaviour
 {
 	public Console[] consoles = new Console[10];
 	public GameObject[] locations = new GameObject[5];
+
+
     // Start is called before the first frame update
     void Start()
     {
