@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BaleenBalasts
   m_EditorClassIdentifier: 
   name: BaleenBalasts
-  artwork: {fileID: 21300000, guid: f58e1eebc3b1f4c6cac619e9077dd696, type: 3}
+  artwork: {fileID: -7547698689847524280, guid: 57a93784f98fe4bec87ce37158291a85,
+    type: 3}
