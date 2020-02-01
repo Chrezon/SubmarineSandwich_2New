@@ -6,9 +6,12 @@ public class ActivitiesScript : MonoBehaviour
 {
 	public Console[] consoles = new Console[10];
 	public GameObject[] locations = new GameObject[5];
+    public float timePerSequence = 30f;
+	private float timeElapsed = 0f; 
     // Start is called before the first frame update
     void Start()
     {
+        // randomizes each console on screen
 		shuffle(consoles);
 		for (int i = 0; i < locations.Length; i++)
 		{
@@ -19,7 +22,16 @@ public class ActivitiesScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		timePerSequence -= Time.deltaTime;
+		timeElapsed += Time.deltaTime;
+
+		ArrayList<>[] currentSequence = new ArrayList<>[2];
+
+
+		if (timePerSequence == 0 && currentSequence[0].Count != 0)
+		{
+            // Death function call here 
+		}
     }
 
     private void shuffle(Console[] arr)
@@ -35,5 +47,10 @@ public class ActivitiesScript : MonoBehaviour
 			arr[i] = arr[rand];
 			arr[rand] = temp;
 		}
+	}
+
+    void gameOver()
+	{
+
 	}
 }
