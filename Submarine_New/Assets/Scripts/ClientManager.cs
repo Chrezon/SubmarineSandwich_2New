@@ -86,4 +86,9 @@ public class ClientManager : MonoBehaviourPunCallbacks
             JoinDefaultRoom();
         }
     }
+
+    public override void OnJoinedRoom()
+    {
+        PhotonNetwork.LoadLevel("SampleScene");
+    }
 }
