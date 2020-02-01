@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public float speed = 4f;
-    // public Animator animator; 
+    public Animator animator; 
     float xInput = 0f;
     float yInput = 0f;
 
@@ -22,23 +22,22 @@ public class CharacterMovement : MonoBehaviour
         yInput = Input.GetAxisRaw("Vertical");
 
         // Code to take care of animations
-       /* if (xInput != 0f)
+        /*
+       if (xInput != 0f)
         {
-            animator.SetFloat("Speed_Y", 0f);
-            animator.SetFloat("Speed_X", xInput);
+            animator.SetFloat("SPEED", 0f);
+            animator.SetFloat("SPEED", xInput);
         } else
         {
-            animator.SetFloat("Speed_X", 0f);
-            animator.SetFloat("Speed_Y", yInput);
-        } */
+            animator.SetFloat("SPEED", 0f);
+            animator.SetFloat("SPEED", yInput);
+        }
+       */
+
     }
 
     private void FixedUpdate()
     {
-		if (!float.IsNaN(xInput) && !float.IsNaN(yInput))
-		{
 			transform.Translate((new Vector3(xInput, yInput, 0f)).normalized * speed * Time.deltaTime);
-		}
-		
     }
 }
