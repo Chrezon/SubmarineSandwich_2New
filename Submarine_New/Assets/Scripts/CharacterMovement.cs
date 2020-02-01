@@ -35,54 +35,83 @@ public class CharacterMovement : MonoBehaviour
        */
         if (xInput != 0 || yInput != 0)
         {
-            animator.SetFloat("SPEED", 1f);
+            animator.SetFloat("SPEED", 10f);
+        }
+        else
+        {
+            animator.SetFloat("SPEED", 0f);
         }
 
-        if (xInput == -1)
+        bool check = false;
+        if (xInput == -1 && !check)
         {
-            if(yInput == -1)
+            if (yInput == -1)
             {
-                transform.Rotate(Vector3.up* -135);
+                transform.Rotate(Vector3.up * -135);
+                check = true;
             }
-            else if(yInput == 0)
+            else if (yInput == 0)
             {
-                transform.Rotate(Vector3.up * -90);
+                transform.localRotation = transform.Rotate(Vector3.up * -90);
+                check = true;
             }
             else
             {
-                transform.Rotate(Vector3.up * -45);
+                transform.localRotation = transform.Rotate(Vector3.up * -45);
+                check = true;
             }
         }
-        else if(xInput == 1)
+        else if (xInput == 1 && !check)
         {
             if (yInput == -1)
             {
                 transform.Rotate(Vector3.up * 135);
+                check = true;
             }
-            else if(yInput == 0)
+            else if (yInput == 0)
             {
                 transform.Rotate(Vector3.up * 90);
+                check = true;
             }
             else
             {
                 transform.Rotate(Vector3.up * 45);
+                check = true;
             }
-        }else
+        }
+        else if (xInput == 0 && !check)
         {
             if (yInput == -1)
             {
                 transform.Rotate(Vector3.up * 180);
+                check = true;
             }
             else if (yInput == 1)
             {
                 transform.Rotate(Vector3.up * 0);
+                check = true;
             }
-            }
-
+        }
+        if (yInput == 0 && xInput == 0)
+        {
+            check = false;
+        }
+    }
+            
+        /*if (Input.GetButtonDown("left") && Input.GetButtonDown("up"))
+            RotateLeft();
     }
 
-    private void FixedUpdate()
+        void RotateLeft()
+        {
+            Quaternion theRotation = transform.localRotation;
+            theRotation.z = 315;
+            transform.localRotation = theRotation;
+        }*/
+
+        private void FixedUpdate()
     {
 			transform.Translate((new Vector3(xInput, yInput, 0f)).normalized * speed * Time.deltaTime);
     }
+
 }
