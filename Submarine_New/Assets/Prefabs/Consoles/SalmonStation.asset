@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: SalmonStation
   m_EditorClassIdentifier: 
   name: SalmonStation
-  artwork: {fileID: -8209675633890685364, guid: 57a93784f98fe4bec87ce37158291a85,
-    type: 3}
+  artwork: {fileID: 21300000, guid: 26e483a2e17e943a18d1477a052c647a, type: 3}

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Octorpedo
   m_EditorClassIdentifier: 
   name: Octorpedo
-  artwork: {fileID: -7347180534517173270, guid: 57a93784f98fe4bec87ce37158291a85,
-    type: 3}
+  artwork: {fileID: 21300000, guid: 969faa1bf3b5a4f4391014d64dd75955, type: 3}
