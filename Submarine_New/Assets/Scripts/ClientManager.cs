@@ -63,22 +63,20 @@ public class ClientManager : MonoBehaviourPunCallbacks
 
     void JoinDefaultRoom()
     {
-        RoomOptions room_options = new RoomOptions(
-            );
+        RoomOptions room_options = new RoomOptions();
+        room_options.MaxPlayers = 2;
         PhotonNetwork.JoinOrCreateRoom(
                 "Default",
                 room_options,
                 null);
         Debug.Log("Joining room");
+        Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
 
     }
     public override void OnConnectedToMaster()
     {
         if (this.state == ConnectionState.CONNECTING)
         {
-
-            Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room.\n Calling: PhotonNetwork.JoinRandomRoom(); Operation will fail if no room found");
-
             JoinDefaultRoom();
             this.state = ConnectionState.CONNECTEDANDJOINING;
         }
@@ -88,8 +86,9 @@ public class ClientManager : MonoBehaviourPunCallbacks
     {
         if (this.state == ConnectionState.CONNECTEDANDJOINING)
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel("SampleScene");
             this.state = ConnectionState.JOINEDANDSTARTINGGAME;
         }
-    }
+    }   
 }

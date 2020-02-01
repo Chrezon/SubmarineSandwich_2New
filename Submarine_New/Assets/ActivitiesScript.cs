@@ -9,11 +9,10 @@ public class ActivitiesScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		int temp = 0; 
+		shuffle(consoles);
 		for (int i = 0; i < locations.Length; i++)
 		{
-			temp = Random.Range(0, 10);
-			locations[i].GetComponent<ConsoleDisplay>().console = consoles[temp];
+			locations[i].GetComponent<ConsoleDisplay>().console = consoles[i];
 		}
     }
 
@@ -23,13 +22,18 @@ public class ActivitiesScript : MonoBehaviour
         
     }
 
-   /* private void shuffle(GameObject[] arr)
+    private void shuffle(Console[] arr)
 	{
 		int leng = arr.Length;
-		GameObject[] temp;
+		Console temp;
+        int rand = 0;
+
         for (int i = 0; i < leng; i++)
 		{
-			temp = arr[i]; 
+			rand = Random.Range(0, 10 - i);
+			temp = arr[i];
+			arr[i] = arr[rand];
+			arr[rand] = temp;
 		}
-	}*/ 
+	}
 }
