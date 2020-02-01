@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc5f95a826cf94014a8a1b8d025a9e37, type: 3}
-  m_Name: BaleenBalasts
+  m_Name: StingRaydar
   m_EditorClassIdentifier: 
-  name: BaleenBalasts
-  artwork: {fileID: 21300000, guid: f58e1eebc3b1f4c6cac619e9077dd696, type: 3}
+  name: StingRaydar
+  artwork: {fileID: 21300000, guid: 91d5b372a8af24fefa68632ff82d17b0, type: 3}
