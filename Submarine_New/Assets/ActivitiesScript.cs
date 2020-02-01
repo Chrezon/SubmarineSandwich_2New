@@ -22,4 +22,14 @@ public class ActivitiesScript : MonoBehaviour
     {
         
     }
+
+   /* private void shuffle(GameObject[] arr)
+	{
+		int leng = arr.Length;
+		GameObject[] temp;
+        for (int i = 0; i < leng; i++)
+		{
+			temp = arr[i]; 
+		}
+	}*/ 
 }

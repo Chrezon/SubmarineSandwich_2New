@@ -33,6 +33,51 @@ public class CharacterMovement : MonoBehaviour
             animator.SetFloat("SPEED", yInput);
         }
        */
+        if (xInput != 0 || yInput != 0)
+        {
+            animator.SetFloat("SPEED", 1f);
+        }
+
+        if (xInput == -1)
+        {
+            if(yInput == -1)
+            {
+                transform.Rotate(Vector3.up* -135);
+            }
+            else if(yInput == 0)
+            {
+                transform.Rotate(Vector3.up * -90);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up * -45);
+            }
+        }
+        else if(xInput == 1)
+        {
+            if (yInput == -1)
+            {
+                transform.Rotate(Vector3.up * 135);
+            }
+            else if(yInput == 0)
+            {
+                transform.Rotate(Vector3.up * 90);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up * 45);
+            }
+        }else
+        {
+            if (yInput == -1)
+            {
+                transform.Rotate(Vector3.up * 180);
+            }
+            else if (yInput == 1)
+            {
+                transform.Rotate(Vector3.up * 0);
+            }
+            }
 
     }
 
