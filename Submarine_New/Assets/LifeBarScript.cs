@@ -54,8 +54,6 @@ public class LifeBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        decrementHealth();
-        Debug.Log(getHealth());
         checkTaskFailed();
 
 
