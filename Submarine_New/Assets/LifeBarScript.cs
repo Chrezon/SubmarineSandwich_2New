@@ -28,7 +28,7 @@ public class LifeBarScript : MonoBehaviour
     void checkTaskFailed()
     {
 
-        if (totalHealth <= threshold)
+        if (getHealth() <= threshold)
         {
             gameObject.SetActive(!gameObject.activeSelf);
             gameOver();
@@ -54,7 +54,8 @@ public class LifeBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        decrementHealth();
+        Debug.Log(getHealth());
         checkTaskFailed();
 
 

@@ -15,46 +15,39 @@ public class consoleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OnTriggerEnter2D();
+        Debug.Log(consoleString);
     }
 
 
-    void resetInput()
+    public static void resetInput()
     {
         consoleString = "";
     }
 
 
-    void OnTriggerEnter2D() //Collider2D col
+    void OnTriggerStay2D(Collider2D col) 
     {
-        bool antiSpam = false;
-
-
-        for (int i = 'a'; i < 'z'; i++)
+        
+        if (col.CompareTag("Player"))
         {
-            string casted = (char)i + "";
-            if (Input.GetKeyDown(casted))
-            {
-                consoleString += casted;
-                lastKey = casted;
-                antiSpam = true;
+
+            for (int i = 'a'; i < 'z'; i++)
+         {
+                string casted = (char)i + "";
+                if (Input.GetKeyDown(casted) && casted != lastKey)
+                {
+                    consoleString += casted;
+                   lastKey = casted;
+                
+                }
+
             }
-
+            }
         }
+
+    void OnTriggerExit (Collider col)
+    {
+        resetInput();
+    }
     }
 
-
-
-
-
-
-
-
-    Debug.Log(consoleString);
-        //if (col.CompareTag("Player"))
-       // {
-       //
-       //     Debug.Log("player entered this area");
-       // }
-    }
-}

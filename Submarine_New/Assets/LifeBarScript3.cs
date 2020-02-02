@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeBarScript2 : MonoBehaviour
+public class LifeBarScript3 : MonoBehaviour
 {
 
 
-    public const int threshold = 0;
+    public const int threshold = 2;
 
     // Start is called before the first frame update
     void Start()
