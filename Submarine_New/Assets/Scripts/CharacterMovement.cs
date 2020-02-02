@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    //CharacterController chara;
     public float speed = 4f;
     public Animator animator; 
     float xInput = 0f;
     float yInput = 0f;
 
+    //private Vector3 moveDirection = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,22 +20,46 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        // Code to take care of animations
+        //moveDirection *= speed;
+        //chara.Move(moveDirection * speed * Time.deltaTime);
         /*
-       if (xInput != 0f)
+        bool check = false;
+        if(Input.GetButtonDown("left"))
         {
-            animator.SetFloat("SPEED", 0f);
-            animator.SetFloat("SPEED", xInput);
-        } else
+            Quaternion theRotation = transform.localRotation;
+            theRotation.z = 270;
+            transform.localRotation = theRotation;
+            check = true;
+        }else if(Input.GetButtonDown("right"))
         {
-            animator.SetFloat("SPEED", 0f);
-            animator.SetFloat("SPEED", yInput);
+            Quaternion theRotation = transform.localRotation;
+            theRotation.z = 90;
+            transform.localRotation = theRotation;
+            check = true;
         }
-       */
-        if (xInput != 0 || yInput != 0)
+        else if(Input.GetButtonDown("up"))
+        {
+            Quaternion theRotation = transform.localRotation;
+            theRotation.z = 0;
+            transform.localRotation = theRotation;
+            check = true;
+
+        }
+        else if(Input.GetButtonDown("down"))
+        {
+            Quaternion theRotation = transform.localRotation;
+            theRotation.z = 180;
+            transform.localRotation = theRotation;
+            check = true;
+        }
+        */
+
+
+        if (xInput !=0 || yInput != 0)
         {
             animator.SetFloat("SPEED", 10f);
         }
@@ -41,77 +67,43 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetFloat("SPEED", 0f);
         }
-
-        bool check = false;
-        if (xInput == -1 && !check)
-        {
-            if (yInput == -1)
-            {
-                transform.Rotate(Vector3.up * -135);
-                check = true;
-            }
-            else if (yInput == 0)
-            {
-                transform.localRotation = transform.Rotate(Vector3.up * -90);
-                check = true;
-            }
-            else
-            {
-                transform.localRotation = transform.Rotate(Vector3.up * -45);
-                check = true;
-            }
-        }
-        else if (xInput == 1 && !check)
-        {
-            if (yInput == -1)
-            {
-                transform.Rotate(Vector3.up * 135);
-                check = true;
-            }
-            else if (yInput == 0)
-            {
-                transform.Rotate(Vector3.up * 90);
-                check = true;
-            }
-            else
-            {
-                transform.Rotate(Vector3.up * 45);
-                check = true;
-            }
-        }
-        else if (xInput == 0 && !check)
-        {
-            if (yInput == -1)
-            {
-                transform.Rotate(Vector3.up * 180);
-                check = true;
-            }
-            else if (yInput == 1)
-            {
-                transform.Rotate(Vector3.up * 0);
-                check = true;
-            }
-        }
-        if (yInput == 0 && xInput == 0)
-        {
-            check = false;
-        }
+        //movement();
     }
-            
-        /*if (Input.GetButtonDown("left") && Input.GetButtonDown("up"))
-            RotateLeft();
+        
+
+        void movement()
+    {
+        Vector3 direction = new Vector3(xInput, yInput, 0f);
+        transform.up = direction.normalized;
     }
-
-        void RotateLeft()
-        {
-            Quaternion theRotation = transform.localRotation;
-            theRotation.z = 315;
-            transform.localRotation = theRotation;
-        }*/
-
+    
         private void FixedUpdate()
     {
-			transform.Translate((new Vector3(xInput, yInput, 0f)).normalized * speed * Time.deltaTime);
+        //moveDirection = new Vector3(xInput, yInput, 0f);
+        /*
+        if (xInput == -1 || xInput == 1)
+        {
+            Quaternion theRotation = transform.localRotation;
+            theRotation.x = 180 * xInput;
+            theRotation.y = 0f;
+            theRotation.z = 0f;
+            transform.localRotation = theRotation;
+            transform.Translate((new Vector3(xInput, 0f, 0f)).normalized * speed * Time.deltaTime, Space.World);
+        }
+        else
+        {
+            transform.Translate((new Vector3(0f, yInput, 0f)).normalized * speed * Time.deltaTime, Space.World);
+        }*/
+        float angle = Vector2.SignedAngle(Vector2.down, new Vector2(xInput, yInput));
+        Quaternion q = Quaternion.Euler(0f, 0f, angle);
+        this.transform.rotation = q;
+
+
+        //float div = yInput / xInput;
+        //transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan(div));
+        transform.Translate((new Vector3(xInput, yInput, 0f)).normalized * speed * Time.deltaTime, Space.World);
+        //transform.rotation = Quaternion.LookRotation(moveDirection);
+        
     }
 
 }
