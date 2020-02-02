@@ -21,7 +21,8 @@ public class ClientManager : MonoBehaviourPunCallbacks
     {
         DISCONNECTED,
         CONNECTING,
-        CONNECTEDTOMASTER,
+        CONNECTEDANDJOINING,
+        JOINEDANDSTARTINGGAME,
     }
 
     ConnectionState state = ConnectionState.DISCONNECTED;
@@ -32,7 +33,6 @@ public class ClientManager : MonoBehaviourPunCallbacks
     void Start()
     {
         Connect();
-
     }
 
     // Update is called once per frame
@@ -63,32 +63,32 @@ public class ClientManager : MonoBehaviourPunCallbacks
 
     void JoinDefaultRoom()
     {
-        RoomOptions room_options = new RoomOptions(
-            );
+        RoomOptions room_options = new RoomOptions();
+        room_options.MaxPlayers = 2;
         PhotonNetwork.JoinOrCreateRoom(
                 "Default",
                 room_options,
                 null);
         Debug.Log("Joining room");
+        Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
 
     }
     public override void OnConnectedToMaster()
     {
-        // we don't want to do anything if we are not attempting to join a room. 
-        // this case where isConnecting is false is typically when you lost or quit the game, when this level is loaded, OnConnectedToMaster will be called, in that case
-        // we don't want to do anything.
-        if (state == ConnectionState.CONNECTING)
+        if (this.state == ConnectionState.CONNECTING)
         {
-
-            Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room.\n Calling: PhotonNetwork.JoinRandomRoom(); Operation will fail if no room found");
-
-            // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnJoinRandomFailed()
             JoinDefaultRoom();
+            this.state = ConnectionState.CONNECTEDANDJOINING;
         }
     }
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("SampleScene");
-    }
+        if (this.state == ConnectionState.CONNECTEDANDJOINING)
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.LoadLevel("SampleScene");
+            this.state = ConnectionState.JOINEDANDSTARTINGGAME;
+        }
+    }   
 }
