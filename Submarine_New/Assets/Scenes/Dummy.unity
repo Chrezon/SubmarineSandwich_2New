@@ -247,3 +247,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameScene: SampleScene
+  GameMaster: {fileID: 8062432878980468659, guid: 69b744faa6e768b48bb0ac5277afb07d,
+    type: 3}

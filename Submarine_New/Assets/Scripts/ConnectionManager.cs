@@ -11,7 +11,7 @@ using Photon.Realtime;
 public class ConnectionManager : MonoBehaviourPunCallbacks
 {
     #region Public Fields 
-    public string GameScene;    
+    public string GameScene;   
 
     #endregion
 
@@ -38,7 +38,6 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     ConnectionState state = ConnectionState.DISCONNECTED;
 
     #endregion
-
 
     // this will try to run the game
     void Start()
@@ -100,7 +99,8 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
             this.state = ConnectionState.START;
-            PhotonNetwork.LoadLevel(this.GameScene);
+            PhotonNetwork.Instantiate("GameMaster", Vector3.zero, Quaternion.identity);
+            SceneManager.LoadScene(this.GameScene + (PhotonNetwork.LocalPlayer.IsMasterClient ? "0" : "1"), LoadSceneMode.Additive);
         }
         else
         {
