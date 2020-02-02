@@ -915,21 +915,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consoles:
   - {fileID: 11400000, guid: 03d55deaf22a54afca86f30e9e5f01a9, type: 2}
+  - {fileID: 11400000, guid: 46ac0ee01212343ca858f76bf2c27544, type: 2}
+  - {fileID: 11400000, guid: 8f951bd305b804b98931ffd65d22f001, type: 2}
   - {fileID: 11400000, guid: 365d3355b4c1e4bcfaaa7b1300b55c63, type: 2}
+  - {fileID: 11400000, guid: e5e5083ad59064f2d961bddc9f5e2798, type: 2}
   - {fileID: 11400000, guid: 145254920ea0a49fd9f18cff2163e491, type: 2}
+  - {fileID: 11400000, guid: 187434141c57f4fb199453eccf1c5536, type: 2}
   - {fileID: 11400000, guid: 01ea15334ea3b4c5d89ce76f3c78b9ec, type: 2}
   - {fileID: 11400000, guid: c6299939d9e104fa4b95199132eeed6f, type: 2}
   - {fileID: 11400000, guid: aac762a7972f142ab9f68238b7281b6f, type: 2}
-  - {fileID: 11400000, guid: 03d55deaf22a54afca86f30e9e5f01a9, type: 2}
-  - {fileID: 11400000, guid: 365d3355b4c1e4bcfaaa7b1300b55c63, type: 2}
-  - {fileID: 11400000, guid: 145254920ea0a49fd9f18cff2163e491, type: 2}
-  - {fileID: 11400000, guid: 01ea15334ea3b4c5d89ce76f3c78b9ec, type: 2}
   locations:
   - {fileID: 1002418221}
   - {fileID: 552842729}
   - {fileID: 624743207}
   - {fileID: 1345122059}
   - {fileID: 239677621}
+  timePerSequence: 30000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
