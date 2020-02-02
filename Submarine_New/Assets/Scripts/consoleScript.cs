@@ -39,41 +39,41 @@ public class consoleScript : MonoBehaviour
     {
         bool enter = false;
         string current = "";
-        
-        if (col.CompareTag("Player"))
-        {
 
 
-            for (int i = 13; i < 'z'; i++)
-         {
-                string casted = (char)i + "";
-                Debug.Log("f" + casted + "f " + consoleString);
-                if (i < 97 && i > 13)
-                {
-                    continue;
-                } else if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    enter = true;
-                    
-                    resetInput();
-                    
-                } else if (Input.GetKeyDown(casted) && casted != lastKey && !enter)
-                {
-                   consoleString += casted;
-                   lastKey = casted;
-                
-                }
+               if (col.CompareTag("Player"))
+            {
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                enter = true;
+
+                resetInput();
 
             }
+            
+            
+
+
+                for (int i = 'a'; i <= 'z'; i++)
+                {
+                    string casted = (char)i + "";
+                Debug.Log(consoleString);
+                    
+
+                    if (Input.GetKeyDown((char)i + "") && casted != lastKey && !enter)
+                    {
+                        consoleString += (char)i + "";
+                        lastKey = (char)i + "";
+                        break;
+
+                    }
+
+                }
+            
             }
         }
 
 
-
-    void OnTriggerExit2D (Collider2D obj)
-    {
-        
-        
-    }
     }
 
