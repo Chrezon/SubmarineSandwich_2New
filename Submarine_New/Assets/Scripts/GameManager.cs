@@ -11,31 +11,27 @@ using UnityEngine.SceneManagement;
 /// Deals with quiting the room and the game
 /// Deals with level loading (outside the in room synchronization)
 /// </summary>
-public class GameManager : MonoBehaviourPunCallbacks
+public class GameManager : MonoBehaviour
 {
     #region Public Fields
 
-    static public GameManager Instance;
 
     #endregion
 
-    public Console[] consoles = new Console[10];
+    public Console[] consoles = new Console[5];
     public GameObject[] locations = new GameObject[5];
-
-    public GameObject[] players = new GameObject[2];
     
     void Start()
     {
-        shuffle(consoles);
+        //shuffle(consoles);
         for (int i = 0; i < locations.Length; i++)
         {
             locations[i].GetComponent<ConsoleDisplay>().console = consoles[i];
         }
 
-        Instance = this;        
         if (!PhotonNetwork.IsConnected)
         {
-            SceneManager.LoadScene("Dummy");
+            SceneManager.LoadScene("GameOver");
             return;
         }
     }
@@ -43,21 +39,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-                   
+                       
     }
 
-    public override void OnPlayerEnteredRoom(Player other)
-    {
-        Debug.Log("OnPlayerEnteredRoom() " + other.NickName); // not seen if you're the player connecting
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
-
-            GameObject player = PhotonNetwork.InstantiateSceneObject("player", new Vector3(0f, 0f, 0f),new Quaternion (0f, 0f, 0f, 0f));
-            
-        }
-    }
     private void shuffle(Console[] arr)
     {
         int leng = arr.Length;
@@ -66,7 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < leng; i++)
         {
-            rand = Random.Range(0, 10 - i);
+            rand = Random.Range(0, 5 - i);
             temp = arr[i];
             arr[i] = arr[rand];
             arr[rand] = temp;

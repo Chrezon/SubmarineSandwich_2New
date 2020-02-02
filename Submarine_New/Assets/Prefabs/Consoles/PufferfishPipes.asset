@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc3284eace5a64d4bb516df7d7effdb9, type: 3}
-  m_Name: PunSceneSettingsFile
+  m_Script: {fileID: 11500000, guid: fc5f95a826cf94014a8a1b8d025a9e37, type: 3}
+  m_Name: PufferfishPipes
   m_EditorClassIdentifier: 
-  SceneSettingsListFoldoutOpen: 1
-  MinViewIdPerScene: []
+  name: PufferfishPipes
+  artwork: {fileID: 21300000, guid: 589b5762236b64680bed15d648922e56, type: 3}
