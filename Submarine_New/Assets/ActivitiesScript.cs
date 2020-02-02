@@ -34,7 +34,7 @@ public class ActivitiesScript : MonoBehaviour
 			currentSequence = newSequence();
 		} else if (timePerSequence == 0)
 		{
-            // Death function call here
+			//LifeBarScript.decrementHealth();
 		}
     }
 
@@ -55,16 +55,15 @@ public class ActivitiesScript : MonoBehaviour
 
     private ArrayList newSequence()
 	{
-		ArrayList<> location = new ArrayList<>(0);
-		ArrayList<> action = new ArrayList<>();
-
-		string[] sequence = new string[2];
+		ArrayList sequence = new ArrayList();
+		string[] action = new string[2];
         for (int i = 0; i < 8; i++)
 		{
-			sequence[0] = consoles[i].name;
-			sequence[1] = letters[Random.Range(0, letters.Length)].ToString;
-			location.Add(sequence);
+			action[0] = consoles[i].name;
+			action[1] = letters[Random.Range(0, letters.Length)].ToString();
+			sequence.Add(action);
 		}
+		return sequence; 
 	}
 }
 
