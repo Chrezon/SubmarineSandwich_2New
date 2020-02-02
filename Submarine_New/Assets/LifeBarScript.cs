@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeBarScript : MonoBehaviour
 {
@@ -38,12 +39,10 @@ public class LifeBarScript : MonoBehaviour
 
 
 
-    void gameOver()
+    public void gameOver()
     {
-
-
+        SceneManager.LoadScene("GameOver");
         // Do Game Over Stuff
-
     }
 
 
@@ -54,7 +53,12 @@ public class LifeBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         checkTaskFailed();
+        if (LifeBarScript.getHealth() == 0)
+        {
+            gameOver();
+        }
 
 
     }

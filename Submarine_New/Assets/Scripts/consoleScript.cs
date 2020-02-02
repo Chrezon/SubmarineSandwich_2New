@@ -5,6 +5,8 @@ using UnityEngine;
 public class consoleScript : MonoBehaviour
 {
     public static string consoleString = "";
+
+
     public static string lastKey = "";
     // Start is called before the first frame update
     void Start()
@@ -15,8 +17,9 @@ public class consoleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(consoleString);
+        
     }
+
 
 
     public static void resetInput()
@@ -24,19 +27,39 @@ public class consoleScript : MonoBehaviour
         consoleString = "";
     }
 
+    public static string getLastString ()
+    {
+        string output = consoleScript.consoleString;
+        resetInput();
+        return output;
+    }
+
 
     void OnTriggerStay2D(Collider2D col) 
     {
+        bool enter = false;
+        string current = "";
         
         if (col.CompareTag("Player"))
         {
 
-            for (int i = 'a'; i < 'z'; i++)
+
+            for (int i = 13; i < 'z'; i++)
          {
                 string casted = (char)i + "";
-                if (Input.GetKeyDown(casted) && casted != lastKey)
+                Debug.Log("f" + casted + "f " + consoleString);
+                if (i < 97 && i > 13)
                 {
-                    consoleString += casted;
+                    continue;
+                } else if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    enter = true;
+                    
+                    resetInput();
+                    
+                } else if (Input.GetKeyDown(casted) && casted != lastKey && !enter)
+                {
+                   consoleString += casted;
                    lastKey = casted;
                 
                 }
@@ -45,9 +68,12 @@ public class consoleScript : MonoBehaviour
             }
         }
 
-    void OnTriggerExit (Collider col)
+
+
+    void OnTriggerExit2D (Collider2D obj)
     {
-        resetInput();
+        
+        
     }
     }
 
