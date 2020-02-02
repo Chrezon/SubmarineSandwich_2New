@@ -24,40 +24,6 @@ public class CharacterMovement : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        //moveDirection *= speed;
-        //chara.Move(moveDirection * speed * Time.deltaTime);
-        /*
-        bool check = false;
-        if(Input.GetButtonDown("left"))
-        {
-            Quaternion theRotation = transform.localRotation;
-            theRotation.z = 270;
-            transform.localRotation = theRotation;
-            check = true;
-        }else if(Input.GetButtonDown("right"))
-        {
-            Quaternion theRotation = transform.localRotation;
-            theRotation.z = 90;
-            transform.localRotation = theRotation;
-            check = true;
-        }
-        else if(Input.GetButtonDown("up"))
-        {
-            Quaternion theRotation = transform.localRotation;
-            theRotation.z = 0;
-            transform.localRotation = theRotation;
-            check = true;
-
-        }
-        else if(Input.GetButtonDown("down"))
-        {
-            Quaternion theRotation = transform.localRotation;
-            theRotation.z = 180;
-            transform.localRotation = theRotation;
-            check = true;
-        }
-        */
-
 
         if (xInput !=0 || yInput != 0)
         {
@@ -67,18 +33,14 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetFloat("SPEED", 0f);
         }
-        //movement();
     }
-        
 
-        void movement()
-    {
-        Vector3 direction = new Vector3(xInput, yInput, 0f);
-        transform.up = direction.normalized;
-    }
-    
         private void FixedUpdate()
     {
+        float angle = Vector2.SignedAngle(Vector2.down, new Vector2(xInput, yInput));
+        Quaternion q = Quaternion.Euler(0f, 0f, angle);
+        this.transform.rotation = q;
+        transform.Translate((new Vector3(xInput, yInput, 0f)).normalized * speed * Time.deltaTime, Space.World);
         //moveDirection = new Vector3(xInput, yInput, 0f);
         /*
         if (xInput == -1 || xInput == 1)
@@ -94,16 +56,17 @@ public class CharacterMovement : MonoBehaviour
         {
             transform.Translate((new Vector3(0f, yInput, 0f)).normalized * speed * Time.deltaTime, Space.World);
         }*/
-        float angle = Vector2.SignedAngle(Vector2.down, new Vector2(xInput, yInput));
-        Quaternion q = Quaternion.Euler(0f, 0f, angle);
-        this.transform.rotation = q;
-
-
         //float div = yInput / xInput;
         //transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan(div));
-        transform.Translate((new Vector3(xInput, yInput, 0f)).normalized * speed * Time.deltaTime, Space.World);
         //transform.rotation = Quaternion.LookRotation(moveDirection);
-        
+
+
+        /*void movement()
+    {
+        Vector3 direction = new Vector3(xInput, yInput, 0f);
+        transform.up = direction.normalized;
+    }*/
+
     }
 
 }
