@@ -7,7 +7,8 @@ public class ActivitiesScript : MonoBehaviour
 	public Console[] consoles = new Console[10];
 	public GameObject[] locations = new GameObject[5];
     public float timePerSequence = 30f;
-	private float timeElapsed = 0f; 
+	private float timeElapsed = 0f;
+	private string letters = "abcdefghijklmnopqrstuvwxyz";
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class ActivitiesScript : MonoBehaviour
 		{
 			locations[i].GetComponent<ConsoleDisplay>().console = consoles[i];
 		}
+		shuffle(consoles);
     }
 
     // Update is called once per frame
@@ -25,12 +27,14 @@ public class ActivitiesScript : MonoBehaviour
 		timePerSequence -= Time.deltaTime;
 		timeElapsed += Time.deltaTime;
 
-		ArrayList<>[] currentSequence = new ArrayList<>[2];
+		ArrayList currentSequence = newSequence();
 
-
-		if (timePerSequence == 0 && currentSequence[0].Count != 0)
+		if (currentSequence.Count == 0)
 		{
-            // Death function call here 
+			currentSequence = newSequence();
+		} else if (timePerSequence == 0)
+		{
+            // Death function call here
 		}
     }
 
@@ -49,8 +53,18 @@ public class ActivitiesScript : MonoBehaviour
 		}
 	}
 
-    void gameOver()
+    private ArrayList newSequence()
 	{
+		ArrayList<> location = new ArrayList<>(0);
+		ArrayList<> action = new ArrayList<>();
 
+		string[] sequence = new string[2];
+        for (int i = 0; i < 8; i++)
+		{
+			sequence[0] = consoles[i].name;
+			sequence[1] = letters[Random.Range(0, letters.Length)].ToString;
+			location.Add(sequence);
+		}
 	}
 }
+
